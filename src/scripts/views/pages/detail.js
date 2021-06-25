@@ -1,9 +1,6 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantData from '../../data/restaurant-data';
-import {
-  createDetailRestaurant,
-  createPreloader,
-} from '../templates/template-creator';
+import { createDetailRestaurant, createPreloader } from '../templates/template-creator';
 
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import { renderDataNotFound, renderNetworkErrorPage } from '../../utils/page-handler';
@@ -71,6 +68,7 @@ const Detail = {
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantData.getRestaurantById(url.id);
+      console.log(restaurant);
       if (restaurant) {
         const detailContainer = document.querySelector('#detail__wrapper');
         detailContainer.innerHTML = createDetailRestaurant(restaurant);
@@ -93,11 +91,13 @@ const Detail = {
               keyword: searchElement.value,
             };
 
-            if (result.foods.length > 0) renderSearchResult(listFoods, 'foods', result.foods);
-            else listFoods.innerHTML = '';
+            if (result.foods.length > 0) {
+              renderSearchResult(listFoods, 'foods', result.foods);
+            } else listFoods.innerHTML = '';
 
-            if (result.drinks.length > 0) renderSearchResult(listDrinks, 'drinks', result.drinks);
-            else listDrinks.innerHTML = '';
+            if (result.drinks.length > 0) {
+              renderSearchResult(listDrinks, 'drinks', result.drinks);
+            } else listDrinks.innerHTML = '';
 
             callbackSearch(resultSearch, data);
 

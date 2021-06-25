@@ -9,7 +9,8 @@
     "start": "http-server ./dist",
     "test": "karma start",
     "e2e": "codeceptjs run",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "postinstall": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "author": "Nico <nicosiput@gmail.com>",
   "license": "ISC",
