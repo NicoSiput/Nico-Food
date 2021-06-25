@@ -10,7 +10,7 @@
     "test": "karma start",
     "e2e": "codeceptjs run",
     "lint": "eslint ./src",
-    "postinstall": "webpack -p"
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.js --progress"
   },
   "author": "Nico <nicosiput@gmail.com>",
   "license": "ISC",
