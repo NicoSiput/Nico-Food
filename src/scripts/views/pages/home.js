@@ -1,13 +1,13 @@
-import ScrollingSection from "../../utils/scroll-section";
-import { renderNetworkErrorPage } from "../../utils/page-handler";
-import RestaurantData from "../../data/restaurant-data";
-import "../parts/hero-section";
-import "../parts/list-restaurants";
-import "../parts/list-foods";
-import "../parts/list-drinks";
-import "../parts/booking-section";
-import "../parts/footer-section";
-import { createSkeletonItems } from "../templates/template-creator";
+import ScrollingSection from '../../utils/scroll-section';
+import { renderNetworkErrorPage } from '../../utils/page-handler';
+import RestaurantData from '../../data/restaurant-data';
+import '../parts/hero-section';
+import '../parts/list-restaurants';
+import '../parts/list-foods';
+import '../parts/list-drinks';
+import '../parts/booking-section';
+import '../parts/footer-section';
+import { createSkeletonItems } from '../templates/template-creator';
 
 const Home = {
   async preLoader() {
@@ -74,19 +74,19 @@ const Home = {
   async afterRender() {
     try {
       const restaurants = await RestaurantData.listRestaurant();
-      const listRestaurant = document.querySelector("list-restaurant");
+      const listRestaurant = document.querySelector('list-restaurant');
       listRestaurant.restaurants = restaurants;
 
-      const listFoods = document.querySelector("list-foods");
+      const listFoods = document.querySelector('list-foods');
       listFoods.restaurants = restaurants;
 
-      const listDrinks = document.querySelector("list-drinks");
+      const listDrinks = document.querySelector('list-drinks');
       listDrinks.restaurants = restaurants;
 
-      const bookingSection = document.querySelector("booking-section");
+      const bookingSection = document.querySelector('booking-section');
       bookingSection.restaurants = restaurants;
 
-      const listSection = ["booking"];
+      const listSection = ['booking'];
       const idSection = window.location.hash.substr(1);
       ScrollingSection.init({ listSection, idSection });
     } catch (error) {

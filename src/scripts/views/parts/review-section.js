@@ -32,9 +32,7 @@ class ReviewSection extends HTMLElement {
       </div>
     </section>`;
 
-    document.querySelector(
-      '#restaurant-name',
-    ).innerHTML = `${restaurant.name}, ${restaurant.city}`;
+    document.querySelector('#restaurant-name').innerHTML = `${restaurant.name}, ${restaurant.city}`;
     document.querySelector('.value-star').innerHTML = restaurant.rating;
     document.querySelector('.count-review').innerHTML = restaurant.consumerReviews.length;
     const starElement = document.querySelector('star-rating');

@@ -1,8 +1,8 @@
 /* eslint-disable no-empty-function */
-import DrawerInitiator from "../utils/drawer-initiator";
-import { render404Page } from "../utils/page-handler";
-import UrlParser from "../routes/url-parser";
-import routes from "../routes/routes";
+import DrawerInitiator from '../utils/drawer-initiator';
+import { render404Page } from '../utils/page-handler';
+import UrlParser from '../routes/url-parser';
+import routes from '../routes/routes';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -22,10 +22,15 @@ class App {
 
   async renderPage() {
     try {
-      const url = UrlParser.parseActiveUrlWithCombiner();
-      const page = routes[url];
-      this._content.innerHTML = await page.render();
-      await page.afterRender();
+      console.log(navigator.onLine);
+      if (!navigator.onLine) {
+        this._content.innerHTML = 'OFFLINE PAGE';
+      } else {
+        const url = UrlParser.parseActiveUrlWithCombiner();
+        const page = routes[url];
+        this._content.innerHTML = await page.render();
+        await page.afterRender();
+      }
     } catch (error) {
       console.log(error);
       render404Page();
